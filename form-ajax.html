@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`form-ajax`
+main tmdb form
+
+@demo demo/index.html 
+-->
+
+<dom-module id="form-ajax">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'form-ajax',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'form-ajax',
+        },
+      },
+
+    });
+  </script>
+</dom-module>

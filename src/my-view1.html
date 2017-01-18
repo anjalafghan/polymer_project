@@ -14,14 +14,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-button/paper-button.html"> -->
 <link rel="import" href="../bower_components/vaadin-grid/vaadin-grid.html">
 <script src="../bower_components/webcomponentsjs/webcomponents.js" charset="utf-8"></script>
-<link rel="import" href="main-formm.html" />
 <link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="form-input.html">
+<link rel="import" href="../bower_components/paper-material/paper-material.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+
+
 
 
 
 
 <dom-module id="my-view1">
   <template>
+  <template is="dom-bind">
   <style include="shared-styles">
     :host {
       display: block;
@@ -29,24 +34,34 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       padding: 10px;
     }
 form paper-input{
-  align-self: center;
+
 
 }
-form paper-button{
-  align-self: center;
-}
 
+
+.card{
+  width: 50%;
+
+}
 
     </style>
+<div class="card">
+<form action="http://httpbin.org/get" type="get" id="form">
+      <form-input keyword={{_keyw}}></form-input>
+<paper-button raised onclick="getElementById('form').submit()">SUBMIT</paper-button>
+      <input name="keyword" value="[[_keyw]]" hidden />
+      <input type="submit">
 
-    <div class="card">
+</form>
 
-    </div>
+</div>
+
   </template>
-
+</template>
   <script>
     Polymer({
       is: 'my-view1',
+
     });
 
   </script>

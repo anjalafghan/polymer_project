@@ -1,0 +1,36 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="form-input">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+<style include="shared-styles"></style>
+<div class="label">
+  <paper-input label="keyword" id="mainkey"></paper-input>
+</div>
+  </template>
+</dom-module>
+<script>
+  Polymer({
+    is: "form-input",
+    properties: {
+      keyword: {
+        type: String,
+        notify: true
+      }
+    },
+    listeners: {
+      'input': '_onInput'
+    },
+    _onInput: function() {
+this.keyword = this.$.mainkey.value;
+    }
+
+  });
+</script>
