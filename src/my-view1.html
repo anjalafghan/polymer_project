@@ -18,15 +18,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="form-input.html">
 <link rel="import" href="../bower_components/paper-material/paper-material.html">
 <link rel="import" href="../bower_components/paper-button/paper-button.html">
-
-
-
-
-
-
+<link rel="import" href="scrape.php">
 <dom-module id="my-view1">
   <template>
-  <template is="dom-bind">
+
   <style include="shared-styles">
     :host {
       display: block;
@@ -46,17 +41,11 @@ form paper-input{
 
     </style>
 <div class="card">
-<form action="http://httpbin.org/get" type="get" id="form">
-      <form-input keyword={{_keyw}}></form-input>
-<paper-button raised onclick="getElementById('form').submit()">SUBMIT</paper-button>
-      <input name="keyword" value="[[_keyw]]" hidden />
-      <input type="submit">
-
-</form>
+<form-input keyword={{keyword}}></form-input>
+<input name="keyword" value="[[keyword]]" hidden>
 
 </div>
 
-  </template>
 </template>
   <script>
     Polymer({

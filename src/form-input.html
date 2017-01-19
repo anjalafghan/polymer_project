@@ -1,6 +1,8 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
 
+<link rel="import" href="scrape.php">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="form-input">
@@ -10,12 +12,13 @@
     }
   </style>
   <template>
-<style include="shared-styles"></style>
-<div class="label">
-  <paper-input label="keyword" id="mainkey"></paper-input>
-</div>
+    <paper-input label="keyword" id="keyword">
+      <input type="hidden" name="keyword" id="keyword" value="{{keyword::input}}">
+    </paper-input>
+<paper-button raised onclick="submitForm()">Submit</paper-button>
+<input type="submit" class="btn">
+
   </template>
-</dom-module>
 <script>
   Polymer({
     is: "form-input",
@@ -29,8 +32,9 @@
       'input': '_onInput'
     },
     _onInput: function() {
-this.keyword = this.$.mainkey.value;
+      this.keyword = this.$.keyword.value;
     }
 
   });
 </script>
+</dom-module>

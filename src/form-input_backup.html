@@ -1,0 +1,51 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="scrape.php">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="form-input">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+  <template>
+    <paper-input label="keyword" value="{{keyword::input}}"></paper-input>
+    <paper-button raised onclick="{{trykeyword}}" id="keybutton" >
+      Submit
+    </paper-button>
+<iron-ajax
+  auto
+  method="POST"
+  url="http://localhost:8080/scrape.php"
+  handle-as="json"
+  on-response="keyResponse"></iron-ajax>
+  </template>
+  <script>
+    Polymer({
+      is: "form-input",
+      properties: {
+        keyword: {
+          type: String,
+          value: null
+        }
+      },
+      trykeyword : function(e) {
+        var data = encodeURIComponent(this.keyword);
+        console.log(data);
+        this.$.ajax.body=data;
+        this.$.ajax.generateRequest();
+      },
+      keyResponse : function(r) {
+        console.log(r.detail.response);
+        if (r.detail.response.success==1) {
+          console.log("Success");
+          console.log("Failure");
+        }
+      }
+
+    });
+  </script>
+</dom-module>
